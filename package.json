@@ -2,10 +2,10 @@
   "name": "app",
   "version": "1.0.0",
   "description": "CloudP1Backend",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/Cloud-Group6/Project1#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "mongoose": "^6.9.0",
     "multer": "^1.4.5-lts.1"
   }
 }
