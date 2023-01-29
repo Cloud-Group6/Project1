@@ -39,20 +39,20 @@ app.post('/upload',
     }
 );
 
-function getCurrentFilenames() {
-    fs.readdir(path.join(__dirname, 'files'), (err, files) => {
-        files.forEach(file => {
-            console.log(file);
-        });
-    })
-}
+// function getCurrentFilenames() {
+//     fs.readdir(path.join(__dirname, 'files'), (err, files) => {
+//         files.forEach(file => {
+//             console.log(file);
+//         });
+//     })
+// }
 
 // fs.rename(oldPath, newPath, callback)(err => {
 //     if (err) return console.error(err)
 //     console.log('renamed complete')
 // });
 
-getCurrentFilenames();
+//getCurrentFilenames();
 
 app.get('/download', function(req, res){
     
