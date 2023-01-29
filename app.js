@@ -13,6 +13,7 @@ const fileSizeLimiter = require('./middleware/fileSizeLimiter');
 const PORT = process.env.PORT || 3500;
 
 const app = express();
+var filename;
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -46,10 +47,10 @@ function getCurrentFilenames() {
     })
 }
 
-fs.rename(oldPath, newPath, callback)(err => {
-    if (err) return console.error(err)
-    console.log('renamed complete')
-});
+// fs.rename(oldPath, newPath, callback)(err => {
+//     if (err) return console.error(err)
+//     console.log('renamed complete')
+// });
 
 getCurrentFilenames();
 
