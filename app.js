@@ -3,6 +3,7 @@
 
 const express = require('express');
 const fileUpload = require('express-fileupload');
+const fs = require('fs');
 const path = require('path');
 
 const filesPayloadExists = require('./middleware/filesPayloadExists');
@@ -35,6 +36,28 @@ app.post('/upload',
 
         return res.json({ status: 'success', message: Object.keys(files).toString() })
     }
-)
+);
+
+function getCurrentFilenames() {
+    fs.readdir(path.join(__dirname, 'files'), (err, files) => {
+        files.forEach(file => {
+            console.log(file);
+        });
+    })
+}
+
+fs.rename(oldPath, newPath, callback)(err => {
+    if (err) return console.error(err)
+    console.log('renamed complete')
+});
+
+getCurrentFilenames();
+
+app.get('/download', function(req, res){
+    
+    const file = `${__dirname}/files/Screen Shot 2023-01-28 at 10.58.12 PM.png`;
+    res.download(file); // Set disposition and send it.
+  });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
