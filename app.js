@@ -26,16 +26,21 @@ app.post('/upload',
     fileSizeLimiter,
     (req, res) => {
         const files = req.files
-        console.log(files)
-
-        Object.keys(files).forEach(key => {
-            const filepath = path.join(__dirname, 'files', files[key].name)
-            files[key].mv(filepath, (err) => {
-                if (err) return res.status(500).json({ status: "error", message: err })
-            })
+        files.mv(`${__dirname}/files/${files.name}`, (err) => {
+            if (err) return res.status(500).json({ status: "error", message: err })
         })
-
         return res.json({ status: 'success', message: Object.keys(files).toString() })
+
+        //console.log(files)
+
+        // Object.keys(files).forEach(key => {
+        //     const filepath = path.join(__dirname, 'files', files[key].name)
+        //     files[key].mv(filepath, (err) => {
+        //         if (err) return res.status(500).json({ status: "error", message: err })
+        //     })
+        // })
+
+        // return res.json({ status: 'success', message: Object.keys(files).toString() })
     }
 );
 
@@ -54,9 +59,11 @@ app.post('/upload',
 
 //getCurrentFilenames();
 
+
 app.get('/download', function(req, res){
+    const files1 = req.files
     
-    const file = `${__dirname}/files/Screen Shot 2023-01-28 at 10.58.12 PM.png`;
+    const file = `${__dirname}/files/${files.name}`;
     res.download(file); // Set disposition and send it.
   });
 
