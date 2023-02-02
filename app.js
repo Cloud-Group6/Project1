@@ -19,8 +19,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-
-
 app.post('/upload',
     fileUpload({ createParentPath: true }),
     filesPayloadExists,
@@ -43,9 +41,7 @@ app.post('/upload',
             files[key].mv(filepath, (err) => {
                 if (err) return res.status(500).json({ status: "error", message: err })
             })
-        })
-
-        
+        })   
 
         console.log(filename)
 
