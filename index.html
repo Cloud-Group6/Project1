@@ -17,6 +17,7 @@
     </form>
     <h2></h2>
     <h3></h3>
+    <button> <a href="http://4.227.132.25:3498/download">Download</a></button>
     <script>
         const form = document.getElementById('uploadForm')
 
@@ -29,14 +30,15 @@
             Object.keys(myFiles).forEach(key => {
                 formData.append(myFiles.item(key).name, myFiles.item(key))
             })
+        
 
-            const response = await fetch('http://localhost:3500/upload', {
+            const response = await fetch('http://4.227.132.25:3498/upload', {
+                mode: 'no-cors',
                 method: 'POST',
                 body: formData
             })
 
-            const json = await response.json()
-
+            const resp = await response.json()
             const h2 = document.querySelector('h2')
             h2.textContent = `Status: ${json?.status}`
 
