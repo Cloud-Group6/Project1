@@ -10,7 +10,7 @@ const filesPayloadExists = require('./middleware/filesPayloadExists');
 const fileExtLimiter = require('./middleware/fileExtLimiter');
 const fileSizeLimiter = require('./middleware/fileSizeLimiter');
 
-const PORT = process.env.PORT || 3500;
+const PORT = process.env.PORT || 3498;
 
 const app = express();
 var filename;
