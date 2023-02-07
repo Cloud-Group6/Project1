@@ -6,11 +6,11 @@ const fileUpload = require('express-fileupload');
 const fs = require('fs');
 const path = require('path');
 
-const filesPayloadExists = require('./middleware/filesPayloadExists');
-const fileExtLimiter = require('./middleware/fileExtLimiter');
-const fileSizeLimiter = require('./middleware/fileSizeLimiter');
+//const filesPayloadExists = require('./middleware/filesPayloadExists');
+//const fileExtLimiter = require('./middleware/fileExtLimiter');
+//const fileSizeLimiter = require('./middleware/fileSizeLimiter');
 
-const PORT = process.env.PORT || 3500;
+const PORT = process.env.PORT || 3498;
 
 const app = express();
 var filename;
@@ -19,13 +19,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-
-
 app.post('/upload',
     fileUpload({ createParentPath: true }),
-    filesPayloadExists,
-    fileExtLimiter(['.png', '.jpg', '.jpeg']),
-    fileSizeLimiter,
+   // filesPayloadExists,
+    //fileExtLimiter(['.png', '.jpg', '.jpeg']),
+    //fileSizeLimiter,
     (req, res) => {
 
         const files = req.files;
@@ -43,9 +41,7 @@ app.post('/upload',
             files[key].mv(filepath, (err) => {
                 if (err) return res.status(500).json({ status: "error", message: err })
             })
-        })
-
-        
+        })   
 
         console.log(filename)
 
